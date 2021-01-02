@@ -49,6 +49,7 @@ class JiraServiceProvider extends ServiceProvider
             ]
         );
 
+        $loader = AliasLoader::getInstance();
         $loader->alias('Jira', \PWWEB\Jira\Facades\Jira::class);
     }
 
