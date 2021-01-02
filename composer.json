@@ -1,0 +1,53 @@
+{
+    "name": "pwweb/laravel-jira-integration",
+    "description": "Integration wrapper for JIRA under Laravel",
+    "license": "MIT",
+    "authors": [{
+            "name": "FP",
+            "homepage": "https://github.com/pwweb/"
+        },
+        {
+            "name": "RAB",
+            "homepage": "https://github.com/rabrowne85"
+        }
+    ],
+    "homepage": "https://github.com/pwweb/laravel-jira-integration",
+    "keywords": ["library", "laravel", "jira", "integration"],
+    "require": {
+        "php": ">=7.4 || ~8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0"
+        "squizlabs/php_codesniffer": "3.*",
+        "phpmd/phpmd": "@stable",
+        "orchestra/testbench": "^6.0",
+        "psalm/plugin-laravel": "^1.2",
+        "amirami/localizator": "^0.2.0@alpha"
+    },
+    "autoload": {
+        "psr-4": {
+            "PWWEB\\Jira\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PWWEB\\Jira\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PWWEB\\Jira\\JiraServiceProvider"
+            ],
+            "aliases": {
+                "Jira": "PWWEB\\Jira\\Facades\\Jira"
+            }
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm -c psalm.xml --show-info=true",
+        "test": "vendor/bin/phpunit --colors=always"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
