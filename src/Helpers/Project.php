@@ -4,7 +4,7 @@ namespace PWWEB\Jira\Helpers;
 
 use JiraRestApi\Project\ProjectService;
 use JiraRestApi\JiraException;
-use JiraRestApi\Issue\IssueField;
+use JiraRestApi\Project\Project;
 
 class Project
 {
@@ -34,9 +34,9 @@ class Project
      *
      * @param array $parameters Parameters for retrieving issue details.
      *
-     * @return JiraRestApi\Issue\IssueField|null
+     * @return JiraRestApi\Project\Project|null
      */
-    public function get($parameters = []): ?IssueField
+    public function get($parameters = []): ?Project
     {
         if ('' === $this->projectKey) {
             return null;
