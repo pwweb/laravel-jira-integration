@@ -14,19 +14,12 @@ class Issues
     protected $request;
 
     /**
-     * @var string
-     */
-    protected $query;
-
-    /**
      * Issue constructor.
      *
-     * @param string $query
      */
-    public function __construct(string $query)
+    public function __construct()
     {
         $this->request = app(IssueService::class);
-        $this->query = $query;
     }
 
     /**
@@ -34,16 +27,16 @@ class Issues
      *
      * @param array $parameters Parameters for retrieving issue details.
      *
-     * @return JiraRestApi\Issue\IssueField|null
+     * @return array
      */
-    public function get($parameters = [])
+    public function get($query): array
     {
-        if ('' === $this->query) {
-            return null;
+        if ('' === $query) {
+            return [];
         }
 
         try {
-            $issues = $this->request->search($this->query);
+            $issues = $this->request->search($query);
 
             return $issues;
         } catch (JiraRestApi\JiraException $e) {

@@ -26,13 +26,11 @@ class Jira
     /**
      * Accessor for multiple issues.
      *
-     * @param string $query [description]
-     *
      * @return \PWWEB\Jira\Helpers\Issues [description]
      */
-    public function issues(string $query): \PWWEB\Jira\Helpers\Issues
+    public function issues(): \PWWEB\Jira\Helpers\Issues
     {
-        return new Issues($query);
+        return new Issues();
     }
 
     /**
