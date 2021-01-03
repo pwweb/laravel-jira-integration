@@ -24,6 +24,18 @@ class Jira
     }
 
     /**
+     * Accessor for multiple issues.
+     *
+     * @param string $query [description]
+     *
+     * @return \PWWEB\Jira\Helpers\Issues [description]
+     */
+    public function issues(string $query): \PWWEB\Jira\Helpers\Issues
+    {
+        return new Issues();
+    }
+
+    /**
      * Accessor for issue entity.
      *
      * @param string $issueKey

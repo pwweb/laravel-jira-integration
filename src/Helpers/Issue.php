@@ -14,19 +14,19 @@ class Issue
     protected $request;
 
     /**
-     * @var string
+     * @var int|string
      */
-    protected $issueKey;
+    protected $issueIdOrKey;
 
     /**
      * Issue constructor.
      *
-     * @param string $issueKey
+     * @param int|string $issueKey
      */
-    public function __construct(string $issueKey = '')
+    public function __construct($issueIdOrKey = '')
     {
         $this->request = app(IssueService::class);
-        $this->issueKey = $issueKey;
+        $this->issueIdOrKey = $issueIdOrKey;
     }
 
     /**
@@ -38,7 +38,7 @@ class Issue
      */
     public function get($parameters = []): ?IssueField
     {
-        if ('' === $this->issueKey) {
+        if ('' === $this->issueIdOrKey) {
             return null;
         }
 
@@ -61,9 +61,9 @@ class Issue
                 ];
             }
 
-            $issue = $this->request->get($this->issueKey, $parameters);
+            $issue = $this->request->get($this->issueIdOrKey, $parameters);
 
-            return $issue->fields;
+            return $issue;
         } catch (JiraRestApi\JiraException $e) {
             print("Error Occured! " . $e->getMessage());
         }
