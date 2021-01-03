@@ -24,7 +24,7 @@ class Issue
      */
     public function __construct(string $issueKey)
     {
-        $this->request = app(IssueRequest::class);
+        $this->request = app(IssueService::class);
         $this->issueKey = $issueKey;
     }
 
@@ -38,8 +38,6 @@ class Issue
     public function get($parameters = [])
     {
         try {
-            $issueService = new IssueService();
-
             if (true === empty($parameters)) {
                 $parameters = [
                     'fields' => [  // default: '*all'
@@ -58,7 +56,7 @@ class Issue
                 ];
             }
 
-            $issue = $issueService->get($this->issueKey, $parameters);
+            $issue = $this->request->get($this->issueKey, $parameters);
 
             return $issue->fields;
         } catch (JiraRestApi\JiraException $e) {
