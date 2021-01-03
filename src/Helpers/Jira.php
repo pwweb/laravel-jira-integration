@@ -12,18 +12,20 @@ class Jira
     }
 
     /**
-     * [project description]
+     * Accessor for project entity.
      *
      * @param string $projectKey [description]
      *
      * @return \PWWEB\Jira\Helpers\Project [description]
      */
-    protected function project(string $projectKey = ''): \PWWEB\Jira\Helpers\Project
+    public function project(string $projectKey = ''): \PWWEB\Jira\Helpers\Project
     {
         return new Project($projectKey);
     }
 
     /**
+     * Accessor for issue entity.
+     *
      * @param string $issueKey
      *
      * @return \PWWEB\Jira\Helpers\Issue
