@@ -3,6 +3,7 @@
 namespace PWWEB\Jira\Helpers;
 
 use JiraRestApi\Issue\IssueService;
+use JiraRestApi\Issue\IssueField;
 use JiraRestApi\JiraException;
 use JiraRestApi\Issue\Issue as JiraIssue;
 
@@ -66,6 +67,27 @@ class Issue
             return $issue;
         } catch (JiraRestApi\JiraException $e) {
             print("Error Occured! " . $e->getMessage());
+        }
+    }
+
+    public function update()
+    {
+        try {
+            $issueField = new IssueField(true);
+
+            $issueField->->setCustomField('Public Votes', '30');
+
+            // optionally set some query params
+            $editParams = [
+                'notifyUsers' => false,
+            ];
+
+            // You can set the $paramArray param to disable notifications in example
+            $ret = $this->request->update($this->issueIdOrKey, $issueField, $editParams);
+
+            var_dump($ret);
+        } catch (JiraRestApi\JiraException $e) {
+            $this->assertTrue(false, "update Failed : " . $e->getMessage());
         }
     }
 }
