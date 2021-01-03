@@ -7,6 +7,7 @@ use Illuminate\Foundation\AliasLoader;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use PWWEB\Helpers\Jira;
 
 /**
  * PWWEB\Jira
@@ -28,6 +29,10 @@ class JiraServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerConfiguration();
+
+        $this->app->bind('Jira', function () {
+            return new Jira();
+        });
 
         parent::register();
     }
