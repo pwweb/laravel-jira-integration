@@ -2,7 +2,7 @@
 
 namespace PWWEB\Jira\Helpers;
 
-namespace PWWEB\Jira\Helpers\Issue;
+use PWWEB\Jira\Helpers\Issue;
 
 class Jira
 {
