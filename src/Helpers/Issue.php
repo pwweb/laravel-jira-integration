@@ -75,7 +75,7 @@ class Issue
         try {
             $issueField = new IssueField(true);
 
-            $issueField->setCustomField('Public Votes', '30');
+            $issueField->addCustomField('Public Votes', '30');
 
             // optionally set some query params
             $editParams = [
