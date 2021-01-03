@@ -32,7 +32,7 @@ class Jira
      */
     public function issues(string $query): \PWWEB\Jira\Helpers\Issues
     {
-        return new Issues();
+        return new Issues($query);
     }
 
     /**

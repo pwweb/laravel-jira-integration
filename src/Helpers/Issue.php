@@ -4,7 +4,7 @@ namespace PWWEB\Jira\Helpers;
 
 use JiraRestApi\Issue\IssueService;
 use JiraRestApi\JiraException;
-use JiraRestApi\Issue\IssueField;
+use JiraRestApi\Issue\Issue as JiraIssue;
 
 class Issue
 {
@@ -34,9 +34,9 @@ class Issue
      *
      * @param array $parameters Parameters for retrieving issue details.
      *
-     * @return JiraRestApi\Issue\IssueField|null
+     * @return JiraRestApi\Issue\Issue|null
      */
-    public function get($parameters = []): ?IssueField
+    public function get($parameters = []): ?JiraIssue
     {
         if ('' === $this->issueIdOrKey) {
             return null;
