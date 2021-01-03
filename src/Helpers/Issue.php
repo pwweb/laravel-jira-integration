@@ -4,6 +4,7 @@ namespace PWWEB\Jira\Helpers;
 
 use JiraRestApi\Issue\IssueService;
 use JiraRestApi\JiraException;
+use JiraRestApi\Issue\IssueField;
 
 class Issue
 {
@@ -22,7 +23,7 @@ class Issue
      *
      * @param string $issueKey
      */
-    public function __construct(string $issueKey)
+    public function __construct(string $issueKey = '')
     {
         $this->request = app(IssueService::class);
         $this->issueKey = $issueKey;
@@ -33,10 +34,14 @@ class Issue
      *
      * @param array $parameters Parameters for retrieving issue details.
      *
-     * @return string
+     * @return JiraRestApi\Issue\IssueField|null
      */
-    public function get($parameters = [])
+    public function get($parameters = []): ?IssueField
     {
+        if ('' === $this->issueKey) {
+            return null;
+        }
+
         try {
             if (true === empty($parameters)) {
                 $parameters = [

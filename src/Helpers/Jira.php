@@ -11,9 +11,16 @@ class Jira
         return new Session();
     }
 
-    protected function project()
+    /**
+     * [project description]
+     *
+     * @param string $projectKey [description]
+     *
+     * @return \PWWEB\Jira\Helpers\Project [description]
+     */
+    protected function project(string $projectKey = ''): \PWWEB\Jira\Helpers\Project
     {
-        return new Project();
+        return new Project($projectKey);
     }
 
     /**
@@ -21,7 +28,7 @@ class Jira
      *
      * @return \PWWEB\Jira\Helpers\Issue
      */
-    public function issue(string $issueKey): \PWWEB\Jira\Helpers\Issue
+    public function issue(string $issueKey = ''): \PWWEB\Jira\Helpers\Issue
     {
         return new Issue($issueKey);
     }
